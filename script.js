@@ -5,15 +5,20 @@ let historial = [];
 
 // Cargar historial desde localStorage al inicio
 window.onload = () => {
+  document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
+  document.getElementById('pantallaCarga').classList.add('activa');
+  setTimeout(() => {
   const datosGuardados = localStorage.getItem("ecoHistorial");
   if (datosGuardados) {
     historial = JSON.parse(datosGuardados);
   }
   mostrarPantalla('pantallaNombre');
+}, 2000);
 };
 
 function mostrarPantalla(id) {
   document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
+  document.getElementById(id).classList.add('activa');
   document.getElementById(id).classList.add('activa');
 
   if (id === 'pantallaHistorial') {
