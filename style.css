@@ -1,0 +1,59 @@
+/* Fondo limpio y tipografía suave */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f4fdf4;
+  color: #2f4f2f;
+}
+
+/* Pantallas por secciones */
+.pantalla {
+  display: none;
+  padding: 24px;
+}
+
+.pantalla.activa {
+  display: block;
+}
+
+/* Centrado general */
+.centrado {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Botones suaves */
+.boton {
+  background-color: #3da35d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: background 0.2s ease;
+}
+
+.boton:hover {
+  background-color: #2e7d4f;
+}
+
+/* Texto de usuario (esquina superior) */
+#nombreUsuario {
+  position: center;
+  top: 12px;
+  left: 12px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Elementos visuales */
+video,
+canvas,
+#imagenEvidencia,
+.imagenGuardada {
+  width: 90%;
+  max-width: 320px;
+  display: block;
+}
