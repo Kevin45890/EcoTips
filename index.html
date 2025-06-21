@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoTips</title>
+  <style>
+* Fondo y texto principal */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #e9f5e7;
+    color: #2e3d2f;
+  }
+  
+  /* Control de pantallas */
+  .pantalla {
+    display: none;
+    padding: 20px;
+  }
+  
+  .pantalla.activa {
+    display: block;
+  }
+  
+  /* Centrados */
+  .centrado {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  /* Botones verdes */
+  .boton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .boton:hover {
+    background-color: #45a049;
+  }
+  
+  /* Nombre de usuario arriba a la izquierda */
+  #nombreUsuario {
+    position: center;
+    top: 10px;
+    left: 10px;
+    font-weight: bold;
+  }
+  
+  /* Elementos visuales */
+  video,
+  canvas,
+  #imagenEvidencia,
+  .imagenGuardada {
+    width: 300px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Input de nombre */
+  input[type="text"] {
+    padding: 10px;
+    width: 70%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  </style>
+</head>
+<body>
+  </style>
+</head>
+<body>
+
+<!-- Pantalla de carga -->
+<div id="pantallaCarga" class="pantalla activa centrado">
+  <h1>🌱 EcoTips</h1>
+  <p>Cargando...</p>
+</div>
+
+<!-- Nombre de usuario -->
+<div id="pantallaNombre" class="pantalla centrado">
+  <h2>Ingresa tu nombre</h2>
+  <input type="text" id="inputNombre" placeholder="Tu nombre">
+  <br><br>
+  <button class="boton" onclick="guardarNombre()">Ingresar</button>
+</div>
+
+<!-- Menú -->
+<div id="pantallaMenu" class="pantalla centrado">
+  <span id="nombreUsuario"></span>
+  <h2>Elige una tarea ecológica</h2>
+  <button class="boton" onclick="seleccionarTarea('Regar Plantas')">Regar Plantas</button>
+  <button class="boton" onclick="seleccionarTarea('Tirar Basura')">Tirar Basura</button>
+  <br>
+  <button class="boton" onclick="mostrarPantalla('pantallaHistorial')">📁 Ver Tareas Realizadas</button>
+</div>
+
+<!-- Cámara con vista en vivo -->
+<div id="pantallaCamara" class="pantalla centrado">
+  <h2 id="tituloTarea"></h2>
+  <video id="video" autoplay playsinline></video>
+  <button class="boton" onclick="capturar()">Tomar Foto</button>
+  <canvas id="canvas" style="display: none;"></canvas>
+  <button class="boton" onclick="mostrarPantalla('pantallaMenu')">Volver al Menú</button>
+</div>
+
+<!-- Tarea realizada -->
+<div id="pantallaEvidencia" class="pantalla centrado">
+  <h2>Tarea Realizada ✅</h2>
+  <p id="descTarea"></p>
+  <img id="imagenEvidencia">
+  <br><br>
+  <button class="boton" onclick="mostrarPantalla('pantallaMenu')">Volver al Menú</button>
+</div>
+
+<!-- Historial de tareas realizadas -->
+<div id="pantallaHistorial" class="pantalla centrado">
+  <h2>📁 Tareas Realizadas</h2>
+  <div id="historialFotos"></div>
+  <br>
+  <button class="boton" onclick="mostrarPantalla('pantallaMenu')">Volver al Menú</button>
+</div>
+
+<script src="script.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</body>
+</html>
