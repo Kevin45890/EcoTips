@@ -3,7 +3,6 @@ let tarea = "";
 let stream;
 let historial = [];
 
-// Cargar historial desde localStorage al inicio
 window.onload = () => {
   document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
   document.getElementById('pantallaCarga').classList.add('activa');
@@ -44,7 +43,7 @@ function seleccionarTarea(nombreTarea) {
 
 function iniciarCamara() {
   const video = document.getElementById('video');
-  navigator.mediaDevices.getUserMedia({ video: true })
+  navigator.mediaDevices.getUserMedia({ video: { factingMode: { exact: "environment" } } })
     .then(s => {
       stream = s;
       video.srcObject = stream;
@@ -61,11 +60,9 @@ function capturar() {
   ctx.drawImage(video, 0, 0);
   const dataURL = canvas.toDataURL('image/png');
 
-  // Mostrar evidencia actual
   document.getElementById('imagenEvidencia').src = dataURL;
   document.getElementById('descTarea').textContent = `${usuario} realizó la tarea: ${tarea}`;
 
-  // Guardar en historial y en localStorage
   historial.push({
     tarea: tarea,
     imagen: dataURL
